@@ -25,14 +25,14 @@ class _DashBoardState extends State<DashBoard> {
   getData(){
     print('in commodity');
     ApiService.getApi(
-        'https://firebasestorage.googleapis.com/v0/b/vesatogofleet.appspot.com/o/androidTaskApp%2FcommodityList.json?alt=media&token=9b9e5427-8769-4dec-83c4-52afe727dbf9',
+        'commodityList.json?alt=media&token=9b9e5427-8769-4dec-83c4-52afe727dbf9',
         'get').then((value){
       commodityData = value;
       duplicateCommodityData = commodityData;
       print('done commodity');
       print('in buyers');
       ApiService.getApi(
-          'https://firebasestorage.googleapis.com/v0/b/vesatogofleet.appspot.com/o/androidTaskApp%2FbuyerList.json?alt=media&token=3dcc96c2-9309-4873-868d-bf0023f6266c',
+          'buyerList.json?alt=media&token=3dcc96c2-9309-4873-868d-bf0023f6266c',
           'get').then((value){
             setState(() {
               isLoading =false;

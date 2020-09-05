@@ -7,16 +7,12 @@ class Url {
 
 class ApiService {
   static Future getApi(String url, String type) async {
-//    Map<String, String> headers = {
-//      'Content-Type': 'application/json; charset=UTF-8',
-//    };
       switch (type) {
         case "get":
           {
             print('rohit');
             final http.Response response =
-//                await http.get(url, headers: headers);
-            await http.get(url);
+            await http.get(Url.baseUrl+url);
             if (response.statusCode == 200) {
 //              print(response.body);
               return json.decode(response.body);

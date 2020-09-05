@@ -17,8 +17,9 @@ class _TrackingState extends State<Tracking> {
   Set<Marker> _markers = {};
   GoogleMapController mapController;
   List<LatLng> routeCordinates = [];
-  GoogleMapPolyline googleMapPolyline =
-  new GoogleMapPolyline(apiKey: "AIzaSyBgWBQQo-kV4EFDUhr2xCYZBsySJIPB39w");
+
+  //Insert the API KEY in AndroidManifest.xml and in the below line.
+  GoogleMapPolyline googleMapPolyline = new GoogleMapPolyline(apiKey: "Your API KEY");
   BitmapDescriptor customIcon1;
   BitmapDescriptor customIcon2;
 
