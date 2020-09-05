@@ -208,7 +208,7 @@ class _DashBoardState extends State<DashBoard> {
                     height: 10,
                   ),
                   Container(
-                    height: 110,
+                    height: 120,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context,index){
@@ -302,16 +302,16 @@ class _DashBoardState extends State<DashBoard> {
                                         height: 9,
                                       ),
                                       Container(
-                                        height:40,
+                                        height:35,
                                         width: MediaQuery.of(context).size.width/2,
                                         child: ListView.builder(
                                             scrollDirection: Axis.horizontal,
                                             itemCount: buyersData[index]["price"].length,
                                             itemBuilder: (context,index1){
                                               return Container(
-                                                height: 30,
+                                                height: 32,
                                                 width: 54,
-                                                margin: EdgeInsets.only(right: 10,bottom: 10),
+                                                margin: EdgeInsets.only(right: 10),
                                                 decoration: BoxDecoration(
                                                     color: ColorTheme.greyColor
                                                 ),
