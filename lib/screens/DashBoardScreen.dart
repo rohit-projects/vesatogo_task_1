@@ -43,7 +43,7 @@ class _DashBoardState extends State<DashBoard> {
     });
 
   }
-
+  bool flag=false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -103,6 +103,7 @@ class _DashBoardState extends State<DashBoard> {
                                           setState(() {
                                             duplicateCommodityData = commodityData;
                                             showCross =false;
+                                            flag =false;
                                             searchController.clear();
                                           });
                                         },
@@ -111,14 +112,21 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                               onChanged: (string){
                               print('in changed ');
+                                // ignore: missing_return
                                 setState(() {
                                   showCross = true;
                                   duplicateCommodityData = commodityData.where((u)=>
                                   (u["commodityName"] .toLowerCase()
                                       .contains(string
                                       .toLowerCase()))).toList();
+                                  if(duplicateCommodityData.length==0){
+                                    flag=true;
+                                  }else{
+                                    flag = false;
+                                  }
                                 });
                                 if (string.length == null) {
+                                  flag =false;
                                   FocusScope.of(context).unfocus();
                                 }
                               }
@@ -131,6 +139,7 @@ class _DashBoardState extends State<DashBoard> {
                   SizedBox(
                     height: 15,
                   ),
+                  flag? Center(child: Text('No commodity found,Sorry!!!'),):
                   GridView.builder(
                       shrinkWrap: true,
                       itemCount: duplicateCommodityData.length,
@@ -164,14 +173,17 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                                 Flexible(
                                   child: Align(
-                                    child: Text(
-                                      duplicateCommodityData[index]["commodityName"],
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 3),
+                                      child: Text(
+                                        duplicateCommodityData[index]["commodityName"],
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600
+                                        ),
+                                        maxLines: 3,
+                                        textAlign: TextAlign.center,
                                       ),
-                                      maxLines: 3,
-                                      textAlign: TextAlign.center,
                                     ),
                                     alignment: Alignment.center,
                                   ),
@@ -196,11 +208,10 @@ class _DashBoardState extends State<DashBoard> {
                     height: 10,
                   ),
                   Container(
-                    height: 104,
+                    height: 110,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context,index){
-
                         return GestureDetector(
                           onTap: (){
                           },
@@ -256,7 +267,9 @@ class _DashBoardState extends State<DashBoard> {
                                                 padding: const EdgeInsets.only(left: 40,right: 2,bottom: 9),
                                                 child: RichText(
                                                   text: TextSpan(
-                                                    style: Theme.of(context).textTheme.body1,
+                                                    style:TextStyle(
+                                                      color: ColorTheme.blackColor
+                                                    ),
                                                     children: [
                                                       WidgetSpan(
                                                         child: Padding(
@@ -297,7 +310,7 @@ class _DashBoardState extends State<DashBoard> {
                                             itemBuilder: (context,index1){
                                               return Container(
                                                 height: 30,
-                                                width: 47,
+                                                width: 54,
                                                 margin: EdgeInsets.only(right: 10,bottom: 10),
                                                 decoration: BoxDecoration(
                                                     color: ColorTheme.greyColor
